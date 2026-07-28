@@ -3147,15 +3147,107 @@
       }
     }
 
+
+    /* ==============================================================
+       INLINE RSVP GIFT NOTE
+       ============================================================== */
+
+    .rsvp-gift-note {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+      align-items: center;
+      gap: clamp(14px, 2vw, 26px);
+      margin-top: 16px;
+      padding: 18px 18px 18px 20px;
+      border: 1px solid color-mix(in srgb, var(--gold) 44%, transparent);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 85% 25%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 13rem),
+        radial-gradient(circle at 10% 85%, color-mix(in srgb, var(--active-event) 18%, transparent), transparent 12rem),
+        rgba(255,255,255,.055);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .rsvp-gift-copy {
+      min-width: 0;
+    }
+
+    .rsvp-gift-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold-light);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .92;
+    }
+
+    .rsvp-gift-kicker::before {
+      content: "✦";
+      font-size: .72rem;
+      line-height: 1;
+    }
+
+    .rsvp-gift-copy strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.35rem, 2.2vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.12;
+    }
+
+    .rsvp-gift-visual {
+      min-width: 0;
+    }
+
+    .rsvp-gift-visual .gift-visual {
+      min-height: 165px;
+      transform: scale(.74);
+      transform-origin: center bottom;
+    }
+
+    .rsvp-gift-note .gift-glow {
+      opacity: .50;
+    }
+
+    .rsvp-gift-note .gift-sparkle {
+      font-size: .95rem;
+    }
+
+    @media (max-width: 760px) {
+      .rsvp-gift-note {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 16px 16px 14px;
+      }
+
+      .rsvp-gift-copy strong {
+        font-size: 1.38rem;
+      }
+
+      .rsvp-gift-visual {
+        justify-self: center;
+        width: 100%;
+      }
+
+      .rsvp-gift-visual .gift-visual {
+        min-height: 148px;
+        transform: scale(.68);
+      }
+    }
+
 </style>
 </head>
 <body class="no-scroll" data-theme="walima">
-<div class="wedding-progress" aria-hidden="true"><span></span></div>
-<div class="cinematic-reveal" id="cinematicReveal" aria-hidden="true">
-  <canvas id="nameParticleCanvas"></canvas>
-  <div class="cinematic-caption" id="cinematicCaption"></div>
+<div aria-hidden="true" class="wedding-progress"><span></span></div>
+<div aria-hidden="true" class="cinematic-reveal" id="cinematicReveal">
+<canvas id="nameParticleCanvas"></canvas>
+<div class="cinematic-caption" id="cinematicCaption"></div>
 </div>
-
 <div aria-label="Open the invitation" class="invitation-gate" id="invitationGate">
 <div class="gate-panel left"></div>
 <div class="gate-panel right"></div>
@@ -3186,25 +3278,24 @@
 </div>
 </nav>
 <section class="hero" id="home">
-<div class="walima-chandelier" aria-hidden="true">
-  <span class="chandelier-chain"></span>
-  <span class="chandelier-crown"></span>
-  <span class="chandelier-arm left"></span>
-  <span class="chandelier-arm right"></span>
-  <span class="chandelier-bulb b1"></span><span class="chandelier-bulb b2"></span>
-  <span class="chandelier-bulb b3"></span><span class="chandelier-bulb b4"></span>
-  <span class="chandelier-bulb b5"></span>
-  <span class="chandelier-crystal" style="--crystal-left:27%;--crystal-top:154px;--crystal-delay:-.4s">◆</span>
-  <span class="chandelier-crystal" style="--crystal-left:39%;--crystal-top:173px;--crystal-delay:-1.4s">◇</span>
-  <span class="chandelier-crystal" style="--crystal-left:49%;--crystal-top:184px;--crystal-delay:-2.1s">◆</span>
-  <span class="chandelier-crystal" style="--crystal-left:60%;--crystal-top:173px;--crystal-delay:-.9s">◇</span>
-  <span class="chandelier-crystal" style="--crystal-left:72%;--crystal-top:154px;--crystal-delay:-1.8s">◆</span>
+<div aria-hidden="true" class="walima-chandelier">
+<span class="chandelier-chain"></span>
+<span class="chandelier-crown"></span>
+<span class="chandelier-arm left"></span>
+<span class="chandelier-arm right"></span>
+<span class="chandelier-bulb b1"></span><span class="chandelier-bulb b2"></span>
+<span class="chandelier-bulb b3"></span><span class="chandelier-bulb b4"></span>
+<span class="chandelier-bulb b5"></span>
+<span class="chandelier-crystal" style="--crystal-left:27%;--crystal-top:154px;--crystal-delay:-.4s">◆</span>
+<span class="chandelier-crystal" style="--crystal-left:39%;--crystal-top:173px;--crystal-delay:-1.4s">◇</span>
+<span class="chandelier-crystal" style="--crystal-left:49%;--crystal-top:184px;--crystal-delay:-2.1s">◆</span>
+<span class="chandelier-crystal" style="--crystal-left:60%;--crystal-top:173px;--crystal-delay:-.9s">◇</span>
+<span class="chandelier-crystal" style="--crystal-left:72%;--crystal-top:154px;--crystal-delay:-1.8s">◆</span>
 </div>
-
-<div class="hero-motion walima-motion" aria-hidden="true">
-  <div class="deco-frame"></div>
+<div aria-hidden="true" class="hero-motion walima-motion">
+<div class="deco-frame"></div>
 </div>
-<div class="luxury-sheen" aria-hidden="true"></div>
+<div aria-hidden="true" class="luxury-sheen"></div>
 <div class="hero-content">
 <p class="eyebrow">January 17, 2027 · New York</p>
 <h1 id="coupleNames">UMEMA <span class="ampersand">&amp;</span> SAAD</h1>
@@ -3233,7 +3324,6 @@
 </div>
 <p class="section-intro">Everything you need to know about Umema and Saad’s Walima.</p>
 </div>
-
 <div aria-live="polite" class="event-stage" id="eventStage" role="tabpanel">
 <div class="event-stage-content">
 <div class="event-city" id="eventCity">New York</div>
@@ -3248,18 +3338,18 @@
 <aside class="countdown-panel">
 <p class="countdown-title">Live countdown</p>
 <div class="countdown countdown-ring">
-<svg viewBox="0 0 200 200" role="img" aria-label="Wedding countdown progress ring">
+<svg aria-label="Wedding countdown progress ring" role="img" viewbox="0 0 200 200">
 <defs>
-<linearGradient id="countdownGoldGradient" x1="0" y1="0" x2="1" y2="1">
+<lineargradient id="countdownGoldGradient" x1="0" x2="1" y1="0" y2="1">
 <stop offset="0%" stop-color="#ffe3a0"></stop>
 <stop offset="55%" stop-color="#d7af58"></stop>
 <stop offset="100%" stop-color="#8d2942"></stop>
-</linearGradient>
+</lineargradient>
 </defs>
 <circle class="ring-track" cx="100" cy="100" r="90"></circle>
-<circle class="ring-progress" cx="100" cy="100" r="90" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></circle>
+<circle aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="ring-progress" cx="100" cy="100" r="90" role="progressbar"></circle>
 </svg>
-<span class="ring-orbit" aria-hidden="true"></span>
+<span aria-hidden="true" class="ring-orbit"></span>
 <div class="time-unit"><span class="time-value" data-time="days">000</span><span class="time-label">Days</span></div>
 </div>
 <p class="countdown-status" id="countdownStatus">The Walima is getting closer ✦</p>
@@ -3275,14 +3365,12 @@
 <p class="section-intro">2143 Boundary Ave, Farmingdale, NY 11735 · New York</p>
 </div>
 <div class="journey single-event">
-
-
 <article class="city-card">
-<div class="venue-animation" aria-hidden="true">
-  <span class="venue-ring ring-one"></span>
-  <span class="venue-ring ring-two"></span>
-  <span class="venue-ring ring-three"></span>
-  <span class="venue-pin">✦</span>
+<div aria-hidden="true" class="venue-animation">
+<span class="venue-ring ring-one"></span>
+<span class="venue-ring ring-two"></span>
+<span class="venue-ring ring-three"></span>
+<span class="venue-pin">✦</span>
 </div>
 <span class="city-number">January 17, 2027 · 8:00 PM</span>
 <div class="city-name">New York</div>
@@ -3297,13 +3385,12 @@
 </div>
 <div class="hero-actions"><a class="button event-button" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Royal%20Palm%202143%20Boundary%20Ave%20Farmingdale%20NY%2011735" rel="noopener noreferrer" target="_blank">Open venue map</a></div></article>
 </div>
-
-<div class="nyc-panorama reveal" id="nycPanorama" aria-label="Animated New York City skyline lighting up at night">
-  <span class="nyc-label">New York after dark</span>
-  <span class="nyc-moon" aria-hidden="true"></span>
-  <span class="shooting-light" aria-hidden="true"></span>
-  <div class="nyc-buildings" id="nycBuildings" aria-hidden="true"></div>
-  <span class="nyc-reflection" aria-hidden="true"></span>
+<div aria-label="Animated New York City skyline lighting up at night" class="nyc-panorama reveal" id="nycPanorama">
+<span class="nyc-label">New York after dark</span>
+<span aria-hidden="true" class="nyc-moon"></span>
+<span aria-hidden="true" class="shooting-light"></span>
+<div aria-hidden="true" class="nyc-buildings" id="nycBuildings"></div>
+<span aria-hidden="true" class="nyc-reflection"></span>
 </div>
 </section>
 <section class="section reveal" id="rsvp">
@@ -3315,24 +3402,45 @@
 <div class="rsvp-note">
             Your responses will be sent directly to us! If you need to make any edits, feel free to send one again.
           </div>
+<div class="rsvp-gift-note" role="note">
+<div class="rsvp-gift-copy">
+<span class="rsvp-gift-kicker">Gift note</span>
+<strong>No boxed gifts please</strong>
+</div>
+<div aria-hidden="true" class="rsvp-gift-visual">
+<div class="gift-visual">
+<span class="gift-glow"></span>
+<span class="gift-sparkle one">✦</span>
+<span class="gift-sparkle two">✦</span>
+<span class="gift-sparkle three">✦</span>
+<span class="gift-sparkle four">✦</span>
+<span class="gift-money one">$</span>
+<span class="gift-money two">$</span>
+<span class="gift-money three">$</span>
+<span class="gift-bow"></span>
+<span class="gift-box-lid"></span>
+<span class="gift-box-body"></span>
+</div>
+</div>
+</div>
+
 </div>
 <form class="rsvp-form" id="rsvpForm" method="post" novalidate="" target="rsvpFrame">
 <div class="form-grid">
 <div class="rsvp-party-reminder" role="note">
-  <div class="rsvp-party-icon" aria-hidden="true">
-    <svg viewBox="0 0 32 32">
-      <circle cx="11" cy="10" r="4"></circle>
-      <circle cx="22" cy="11" r="3.5"></circle>
-      <path d="M4.5 25c.7-5.1 3-7.6 6.5-7.6s5.8 2.5 6.5 7.6"></path>
-      <path d="M17.3 24.5c.5-4.2 2.1-6.3 4.9-6.3 2.7 0 4.5 2.1 5.1 6.3"></path>
-    </svg>
-  </div>
-  <div>
-    <strong>One RSVP per invited guest</strong>
-    <span>Please submit a separate response for each invited person. If your invitation includes your spouse or another guest, kindly send one RSVP for each person so we can prepare an accurate count. Thank you!</span>
-  </div>
+<div aria-hidden="true" class="rsvp-party-icon">
+<svg viewbox="0 0 32 32">
+<circle cx="11" cy="10" r="4"></circle>
+<circle cx="22" cy="11" r="3.5"></circle>
+<path d="M4.5 25c.7-5.1 3-7.6 6.5-7.6s5.8 2.5 6.5 7.6"></path>
+<path d="M17.3 24.5c.5-4.2 2.1-6.3 4.9-6.3 2.7 0 4.5 2.1 5.1 6.3"></path>
+</svg>
 </div>
-
+<div>
+<strong>One RSVP per invited guest</strong>
+<span>Please submit a separate response for each invited person. If your invitation includes your spouse or another guest, kindly send one RSVP for each person so we can prepare an accurate count. Thank you!</span>
+</div>
+</div>
 <div class="field">
 <label for="guestName">Full name *</label>
 <input autocomplete="name" id="guestName" name="name" placeholder="Your full name" required="" type="text"/>
@@ -3354,7 +3462,6 @@
 <option value="Not sure yet">Not sure yet</option>
 </select>
 </div>
-
 <div class="field">
 <label for="cityTravel">Traveling from</label>
 <input id="cityTravel" name="travelingFrom" placeholder="City and state" type="text"/>
@@ -3376,30 +3483,6 @@
 </form>
 <iframe hidden="" id="rsvpFrame" name="rsvpFrame" title="RSVP submission result"></iframe>
 </div>
-</section>
-
-<section class="section reveal gift-preference-section" id="gifts">
-  <div class="gift-preference-card">
-    <div class="gift-copy">
-      <p class="kicker">With love &amp; gratitude</p>
-      <h2>Gifts</h2>
-      <p>Your presence and duas are the greatest gift. Should you wish to honor us further, monetary gifts are warmly preferred in place of boxed gifts.</p>
-      <span class="gift-preference-badge">Monetary gifts preferred</span>
-    </div>
-    <div class="gift-visual" aria-hidden="true">
-      <span class="gift-glow"></span>
-      <span class="gift-sparkle one">✦</span>
-      <span class="gift-sparkle two">✦</span>
-      <span class="gift-sparkle three">✦</span>
-      <span class="gift-sparkle four">✦</span>
-      <span class="gift-money one">$</span>
-      <span class="gift-money two">$</span>
-      <span class="gift-money three">$</span>
-      <span class="gift-bow"></span>
-      <span class="gift-box-lid"></span>
-      <span class="gift-box-body"></span>
-    </div>
-  </div>
 </section>
 
 <section class="section reveal" id="questions">
@@ -3451,19 +3534,18 @@
 <span>New York · January 17, 2027</span>
 </footer>
 </main>
-<div class="rsvp-success" id="rsvpSuccess" role="dialog" aria-modal="true" aria-labelledby="rsvpSuccessTitle">
-  <div class="rsvp-success-card">
-    <div>
-      <div class="rsvp-success-visual" aria-hidden="true">
-        <div class="success-card-flip">U &amp; S</div>
-      </div>
-      <h3 id="rsvpSuccessTitle">RSVP received</h3>
-      <p>Your Walima response has been received. We look forward to sharing this elegant evening with you.</p>
-      <button class="button primary" id="closeRsvpSuccess" type="button">Close ✦</button>
-    </div>
-  </div>
+<div aria-labelledby="rsvpSuccessTitle" aria-modal="true" class="rsvp-success" id="rsvpSuccess" role="dialog">
+<div class="rsvp-success-card">
+<div>
+<div aria-hidden="true" class="rsvp-success-visual">
+<div class="success-card-flip">U &amp; S</div>
 </div>
-
+<h3 id="rsvpSuccessTitle">RSVP received</h3>
+<p>Your Walima response has been received. We look forward to sharing this elegant evening with you.</p>
+<button class="button primary" id="closeRsvpSuccess" type="button">Close ✦</button>
+</div>
+</div>
+</div>
 <script>
     /*
       ==================================================================
