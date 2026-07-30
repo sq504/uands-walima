@@ -3240,6 +3240,113 @@
       }
     }
 
+
+    /* ==============================================================
+       PARTY SIZE RSVP CARD
+       ============================================================== */
+
+    .party-count-card {
+      grid-column: 1 / -1;
+      position: relative;
+      overflow: hidden;
+      padding: 19px;
+      border: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
+      border-radius: 21px;
+      background:
+        radial-gradient(circle at 92% 12%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 14rem),
+        radial-gradient(circle at 6% 92%, color-mix(in srgb, var(--active-event) 17%, transparent), transparent 14rem),
+        rgba(255,255,255,.052);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.075);
+      transition: opacity .25s ease, border-color .25s ease;
+    }
+
+    .party-count-card.is-muted {
+      opacity: .58;
+      border-color: var(--line);
+    }
+
+    .party-count-heading {
+      display: grid;
+      grid-template-columns: auto minmax(0,1fr);
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 15px;
+    }
+
+    .party-count-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(255,229,164,.24);
+      border-radius: 50%;
+      color: var(--gold-light);
+      background: rgba(0,0,0,.11);
+      box-shadow: 0 0 20px color-mix(in srgb, var(--gold) 15%, transparent);
+    }
+
+    .party-count-icon svg {
+      width: 25px;
+      height: 25px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .party-count-heading strong {
+      display: block;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.28rem;
+      font-weight: 600;
+      line-height: 1.08;
+    }
+
+    .party-count-heading span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .75rem;
+      line-height: 1.55;
+    }
+
+    .party-count-controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .party-count-card .field {
+      margin: 0;
+    }
+
+    .party-names-field {
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .party-names-field.is-hidden {
+      display: none;
+    }
+
+    .party-field-help {
+      grid-column: 1 / -1;
+      margin: 11px 1px 0;
+      color: var(--soft);
+      font-size: .7rem;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 700px) {
+      .party-count-card {
+        padding: 16px;
+      }
+
+      .party-count-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
 </style>
 </head>
 <body class="no-scroll" data-theme="walima">
@@ -3423,24 +3530,10 @@
 </div>
 </div>
 </div>
-
 </div>
 <form class="rsvp-form" id="rsvpForm" method="post" novalidate="" target="rsvpFrame">
 <div class="form-grid">
-<div class="rsvp-party-reminder" role="note">
-<div aria-hidden="true" class="rsvp-party-icon">
-<svg viewbox="0 0 32 32">
-<circle cx="11" cy="10" r="4"></circle>
-<circle cx="22" cy="11" r="3.5"></circle>
-<path d="M4.5 25c.7-5.1 3-7.6 6.5-7.6s5.8 2.5 6.5 7.6"></path>
-<path d="M17.3 24.5c.5-4.2 2.1-6.3 4.9-6.3 2.7 0 4.5 2.1 5.1 6.3"></path>
-</svg>
-</div>
-<div>
-<strong>One RSVP per invited guest</strong>
-<span>Please submit a separate response for each invited person. If your invitation includes your spouse or another guest, kindly send one RSVP for each person so we can prepare an accurate count. Thank you!</span>
-</div>
-</div>
+
 <div class="field">
 <label for="guestName">Full name *</label>
 <input autocomplete="name" id="guestName" name="name" placeholder="Your full name" required="" type="text"/>
@@ -3462,6 +3555,34 @@
 <option value="Not sure yet">Not sure yet</option>
 </select>
 </div>
+<div class="party-count-card is-muted" id="partyCountCard">
+<div class="party-count-heading">
+<div aria-hidden="true" class="party-count-icon">
+<svg viewbox="0 0 32 32">
+<circle cx="11" cy="10" r="4"></circle>
+<circle cx="22" cy="11" r="3.5"></circle>
+<path d="M4.5 25c.7-5.1 3-7.6 6.5-7.6s5.8 2.5 6.5 7.6"></path>
+<path d="M17.3 24.5c.5-4.2 2.1-6.3 4.9-6.3 2.7 0 4.5 2.1 5.1 6.3"></path>
+</svg>
+</div>
+<div>
+<strong>Your party</strong>
+<span>Please select the number of invited guests attending from your invitation.</span>
+</div>
+</div>
+<div class="party-count-controls">
+<div class="field party-size-field">
+<label for="partySize">How many invited guests will attend? *</label>
+<select id="partySize" name="partySize" required="">
+<option value="">Select party size</option>
+<option value="1">1 person</option>
+<option value="2">2 persons</option>
+</select>
+</div>
+</div>
+<p class="party-field-help">Select 1 if only you are attending, or 2 if both invited guests will attend.</p>
+</div>
+
 <div class="field">
 <label for="cityTravel">Traveling from</label>
 <input id="cityTravel" name="travelingFrom" placeholder="City and state" type="text"/>
@@ -3484,7 +3605,6 @@
 <iframe hidden="" id="rsvpFrame" name="rsvpFrame" title="RSVP submission result"></iframe>
 </div>
 </section>
-
 <section class="section reveal" id="questions">
 <div class="section-heading">
 <div>
@@ -3751,6 +3871,7 @@
       window.clearTimeout(submissionTimer);
       $("#submitRsvp").disabled = false;
       $("#rsvpForm").reset();
+      updateAttendanceFields();
       setFormStatus("Your RSVP has been sent. Thank you! ✦", "success");
       window.setTimeout(cinematicShowRsvpSuccess, 260);
       const button = $("#submitRsvp");
@@ -3758,7 +3879,23 @@
       burstConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2, 40);
     }
 
-    function updateAttendanceFields() {}
+
+    function updateAttendanceFields() {
+      const attendance = $("#attendance");
+      const partyCard = $("#partyCountCard");
+      const partySize = $("#partySize");
+      if (!attendance || !partyCard || !partySize) return;
+
+      const isAttending = attendance.value === "Joyfully accepts";
+      partyCard.classList.toggle("is-muted", !isAttending);
+      partySize.disabled = !isAttending;
+      partySize.required = isAttending;
+
+      if (!isAttending) {
+        partySize.value = "";
+      }
+
+    }
 
     function handleRsvpSubmit(event) {
       if (!validateRsvp()) {
@@ -4215,7 +4352,8 @@
     window.setInterval(updateCountdown, 60000);
 
     $("#openInvitation").addEventListener("click", openInvitation);
-        $("#attendance").addEventListener("change", updateAttendanceFields);
+    $("#attendance").addEventListener("change", updateAttendanceFields);
+    updateAttendanceFields();
     $("#rsvpForm").addEventListener("submit", handleRsvpSubmit);
     $("#rsvpFrame").addEventListener("load", finishSubmission);
     $("#celebrateButton").addEventListener("click", event => {
